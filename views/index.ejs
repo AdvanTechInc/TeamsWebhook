@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Checkout</title>
 </head>
 <body>
     <form id="submitForm">
-        <label for="title">Message Title: </label>
-        <input type="text" name="title" id="title">
-        <label for="text">Text: </label>
-        <input type="text" name="text" id="text">
+        <label for="ticketNum">Ticket Number: </label>
+        <input type="text" name="ticketNum" id="ticketNum">
+        <label for="productNum">Product Number: </label>
+        <input type="text" name="productNum" id="productNum">
+        <label for="quantity">Quantity: </label>
+        <input type="text" name="quantity" id="quantity">
+        <label for="submittedBy">SubmittedBy: </label>
+        <input type="text" name="submittedBy" id="submittedBy">
         <button type="submit" class="btn btn-primary" >Submit</button>
         
     </form>
@@ -21,14 +25,15 @@
     form.addEventListener('submit', webhookSubmit)
     async function webhookSubmit(event) {
         event.preventDefault()
-        const title = "Title: Test"
-        const text = "Text: test"
+        const ticketNum = document.getElementById('ticketNum').value
+        const productNum = document.getElementById('productNum').value
+        const quantity = document.getElementById('quantity').value
+        const submittedBy = document.getElementById('submittedBy').value
         const result = await fetch('/json', {
             method: 'POST',
             headers: { "Content-Type": "application/json"},
-            body: JSON.stringify({title: title, text: text})
-            }
-        ).then(res => res.json())
+            body: JSON.stringify({"ticketNum": `${ticketNum}`, "productNum": `${productNum}`, "quantity": `${quantity}`, "submittedBy": `${submittedBy}`})
+        }).then(res => res.json())
     }    
 </script>
 </html>
