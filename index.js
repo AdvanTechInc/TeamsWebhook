@@ -146,8 +146,5 @@ app.post('/json', async (req, res) => {
 http.createServer(app).listen(8080, () => {
     console.log('HTTP server up at port 8080.')
     console.log(url)
-}) 
 
-function calculateDaysBetweenDates(begin, end) {
-    
-}
+})
